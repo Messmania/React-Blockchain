@@ -4,7 +4,7 @@ import './App.css';
 import { connect } from "react-redux";
 import axios from "axios";
 import { add, remove, show, sortByRank, sortByPrice } from "../store/actions/actions";
-import { sanitizeData } from "../utils/general";
+import { sanitizeData, MAX_SIZE} from "../utils/general";
 
 import AddCurrency from "../components/AddCurrency/addCurrency";
 import Currencies from "../components/Currencies/currencies";
@@ -157,6 +157,11 @@ class App extends Component {
           <AddCurrency
             unsel={this.props.unsel}
             selectHandler={(event) => this.props.onAddCurrency(event.target.value)} />
+          {this.props.error ?
+            <div className="errorMessage">
+              Cannot track more than {MAX_SIZE} currencies, remove old entries to add more.</div>
+            : null
+          }
           <Currencies
             sel={this.props.sel}
             delete={this.props.onRemoveCurrency}
@@ -176,7 +181,8 @@ const mapStateToProps = (state) => {
     sel: state.selected,
     unsel: state.unSelected,
     ascRank: state.ascSortByRank,
-    ascPrice: state.ascSortByPrice
+    ascPrice: state.ascSortByPrice,
+    error: state.error
   }
 }
 

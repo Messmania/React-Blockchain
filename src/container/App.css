@@ -45,3 +45,8 @@
   align-items: center;
   justify-content: center;
 }
+
+.errorMessage {
+  color: red;
+  padding: 10px;
+}

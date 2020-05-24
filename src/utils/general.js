@@ -10,6 +10,7 @@ export const sanitizeData = (data) => {
         name: val.name
       });
     }
-    console.log("Sanitized!", arr);
     return arr;
   }
+
+  export const MAX_SIZE=10;

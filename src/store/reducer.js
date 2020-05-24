@@ -1,14 +1,19 @@
 import * as actionTypes from "./actions/actions";
-import { updatedObj } from "../utils/storeUtil"
+import { updatedObj } from "../utils/storeUtil";
+import { MAX_SIZE } from "../utils/general";
 
 const initialState = {
     selected: [],
     unSelected: [],
     ascSortByRank: false,
-    ascSortByPrice: false
+    ascSortByPrice: false,
+    error: false
 }
 
 const addCurrency = (state, action) => {
+    if (state.selected.length === MAX_SIZE) {
+        return updatedObj(state, { error: true });
+    }
     let id = parseInt(action.id);
     let newSelected = action.newEntry;
     let noMatch = state.unSelected.filter(e => e.id !== id); //-- other items from dropdown
@@ -19,7 +24,11 @@ const removeCurrency = (state, action) => {
     let id = parseInt(action.id);
     let match = state.selected.filter(e => e.id === id)[0]; //--find item from table
     let noMatch = state.selected.filter(e => e.id !== id); //--other items in table
-    return updatedObj(state, { selected: noMatch, unSelected: state.unSelected.concat(match) })
+    let updatedUnSel = state.unSelected.concat(match);
+    if (state.error) {
+        return updatedObj(state, { selected: noMatch, unSelected: updatedUnSel, error: false })
+    }
+    return updatedObj(state, { selected: noMatch, unSelected: updatedUnSel })
 }
 
 const sortByRank = (state) => {
