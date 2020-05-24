@@ -18,6 +18,7 @@ const reducer = (state = initialState, action) => {
                 unSelected: action.unsel
             }
         case actionTypes.ADD_CURRENCY:
+            //--fetch this id from server!
             match = state.unSelected.filter(e => e.id === id)[0]; //--find item from dropdown
             notMatch = state.unSelected.filter(e => e.id !== id); //-- other items from dropdown
             return {
