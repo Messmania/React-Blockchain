@@ -49,7 +49,7 @@ const sortByRank = (state) => {
  * Sorts the table by Price
  */
 const sortByPrice = (state) => {
-    let selected = JSON.parse(JSON.stringify(state)).selected;//--bad for performance, change this
+    let selected = JSON.parse(JSON.stringify(state)).selected;
     selected.sort((a, b) => state.ascSortByPrice ? a.price - b.price : b.price - a.price);
     return updatedObj(state, { selected: selected, ascSortByPrice: !state.ascSortByPrice });
 }
