@@ -4,7 +4,7 @@ import './App.css';
 import { connect } from "react-redux";
 import axios from "axios";
 import { add, remove, show, sortByRank, sortByPrice } from "../store/actions/actions";
-import { sanitizeData, MAX_SIZE} from "../utils/general";
+import { sanitizeData, MAX_SIZE } from "../utils/general";
 
 import AddCurrency from "../components/AddCurrency/addCurrency";
 import Currencies from "../components/Currencies/currencies";
@@ -127,6 +127,9 @@ import Currencies from "../components/Currencies/currencies";
 // }
 class App extends Component {
 
+  /**
+   * Loads all the currencies and fetches details of first 5 to show in table
+   */
   componentDidMount() {
     axios.get('/coinmarketcap/map')
       .then(response => {
@@ -143,7 +146,6 @@ class App extends Component {
 
 
   render() {
-    console.log("Render called")
     return (
       <div className="App">
         <header className="App-header">

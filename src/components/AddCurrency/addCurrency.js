@@ -2,7 +2,6 @@ import React from "react";
 import "./addCurrency.css";
 
 const addCurrency = (props) => {
-    console.log("[AddCurency.js] props:", props);
     return (
         <div className="dropdownContainer">
             <select value='def' onChange={props.selectHandler}>

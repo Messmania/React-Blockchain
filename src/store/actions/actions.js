@@ -11,6 +11,9 @@ const syncAdd = (id, newEntry) => {
     return { type: ADD_CURRENCY, id, newEntry }
 }
 
+/**
+ * Async action creator for fetching selected currencies latest details
+ */
 export const add = (id) => {
     return (dispatch, getState) => {
         //--dummy code
