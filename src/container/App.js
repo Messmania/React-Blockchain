@@ -4,6 +4,7 @@ import './App.css';
 import { connect } from "react-redux";
 import axios from "axios";
 import {add, remove, show, sortByRank, sortByPrice} from "../store/actions/actions";
+import {sanitizeData} from "../utils/general";
 
 import AddCurrency from "../components/AddCurrency/addCurrency";
 import Currencies from "../components/Currencies/currencies";
@@ -260,34 +261,34 @@ let data = {
 
 class App extends Component {
 
-  sanitizeData = (data) => {
-    const arr = [];
-    for (let key in data) {
-      let val = data[key];
-      arr.push({
-        id: val.id,
-        rank: val.cmc_rank,
-        price: val.quote.USD.price.toFixed(3),
-        symbol: val.symbol,
-        name: val.name
-      });
-    }
-    console.log("Sanitized!", arr);
-    return arr;
-  }
+  // sanitizeData = (data) => {
+  //   const arr = [];
+  //   for (let key in data) {
+  //     let val = data[key];
+  //     arr.push({
+  //       id: val.id,
+  //       rank: val.cmc_rank,
+  //       price: val.quote.USD.price.toFixed(3),
+  //       symbol: val.symbol,
+  //       name: val.name
+  //     });
+  //   }
+  //   console.log("Sanitized!", arr);
+  //   return arr;
+  // }
 
   componentDidMount() {
     axios.get('/coinmarketcap/map?limit=10', { withCredentials: true })
       .then(response => {
         console.log("Success!", response);
         const firstFive = response.data.data.slice(0, 5).map(e => e.id);
-        const showInDropdown = response.data.data.slice(5);
-        console.log("First five:", firstFive);
+        const showInDropdown = sanitizeData(response.data.data.slice(5));
+        // console.log("First five:", firstFive);
         // let firstFive =[1,2,3,4,5];
         axios.get(`/coinmarketcap/quotes?id=${firstFive.join()}`)
           .then(response => {
-            console.log("Success 2nd:", response);
-            let total = this.sanitizeData(response.data.data);
+            // console.log("Success 2nd:", response);
+            let total = sanitizeData(response.data.data);
             // let total = this.sanitizeData(data);
             let showInTable = total.slice(0, 5);
             console.log("Show:", showInDropdown, showInTable);
