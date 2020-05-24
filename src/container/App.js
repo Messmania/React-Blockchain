@@ -159,7 +159,7 @@ class App extends Component {
             selectHandler={(event) => this.props.onAddCurrency(event.target.value)} />
           {this.props.error ?
             <div className="errorMessage">
-              Cannot track more than {MAX_SIZE} currencies, remove old entries to add more.</div>
+              Cannot track more than {MAX_SIZE} currencies, please remove old entries to add more.</div>
             : null
           }
           <Currencies
