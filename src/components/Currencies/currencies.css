@@ -41,6 +41,7 @@ table tr th:last-child {
 
 table tr button {
     border: none;
+    cursor: pointer;
 }
 
 table th svg {
