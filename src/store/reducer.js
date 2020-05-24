@@ -10,7 +10,6 @@ const initialState = {
 
 const addCurrency = (state, action) => {
     let id = parseInt(action.id);
-    //--fetch this id from server!
     let match = state.unSelected.filter(e => e.id === id)[0]; //--find item from dropdown
     let noMatch = state.unSelected.filter(e => e.id !== id); //-- other items from dropdown
     return updatedObj(state, { selected: state.selected.concat(match), unSelected: noMatch })
@@ -24,9 +23,7 @@ const removeCurrency = (state, action) => {
 }
 
 const sortByRank = (state) => {
-    //--JSON parse method creates deep copy i.e. all references are new, so react will re-render everything!
-    let selected = JSON.parse(JSON.stringify(state)).selected; //--bad for performance, change this
-    // console.log("Sort!:", selected)
+    let selected = JSON.parse(JSON.stringify(state)).selected;
     selected.sort((a, b) => state.ascSortByRank ? a.rank - b.rank : b.rank - a.rank);
     return updatedObj(state, { selected: selected, ascSortByRank: !state.ascSortByRank })
 }
