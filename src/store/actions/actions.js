@@ -10,8 +10,11 @@ export const SORT_BY_PRICE = "SORT_BY_PRICE";
 const syncAdd = (id, newEntry) => {
     return { type: ADD_CURRENCY, id, newEntry }
 }
+
 export const add = (id) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        //--dummy code
+        // const newEntryForTable = getState().unSelected.find(e => e.id === parseInt(id));
         //--Fetch it on every select, because bitcoin prices change, so user wants to see the latest value when it is added to the table
         axios.get(`/coinmarketcap/quotes?id=${id}`)
             .then(response => {

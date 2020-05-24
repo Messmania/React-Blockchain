@@ -1,9 +1,14 @@
 .App {
   text-align: center;
+  font-family: Robot;
+  background-color: #E4F3FB;
+  height: 100vh;
 }
 
 .App-logo {
-  height: 40vmin;
+  position: relative;
+  height: 5vmin;
+  top: 10px;
   pointer-events: none;
 }
 
@@ -14,18 +19,14 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #2CA1DE;
+  min-height: 60px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
+  padding: 10px;
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +36,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.main {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
