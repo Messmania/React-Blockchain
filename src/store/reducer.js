@@ -9,10 +9,8 @@ const initialState = {
 }
 
 const addCurrency = (state, action) => {
-    console.log("In add reducer:", action);
     let id = parseInt(action.id);
     let newSelected = action.newEntry;
-    // let match = state.unSelected.filter(e => e.id === id)[0]; //--find item from dropdown
     let noMatch = state.unSelected.filter(e => e.id !== id); //-- other items from dropdown
     return updatedObj(state, { selected: state.selected.concat(newSelected), unSelected: noMatch })
 }
