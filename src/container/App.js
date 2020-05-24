@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from "react-redux";
 import axios from "axios";
-import * as actions from "../store/actions";
+import {add, remove, show, sortByRank, sortByPrice} from "../store/actions/actions";
 
 import AddCurrency from "../components/AddCurrency/addCurrency";
 import Currencies from "../components/Currencies/currencies";
@@ -336,11 +336,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAddCurrency: (id) => dispatch({ type: actions.ADD_CURRENCY, id }),
-    onRemoveCurrency: (id) => dispatch({ type: actions.REMOVE_CURRENCY, id }),
-    showAll: (sel, unsel) => dispatch({ type: actions.SHOW_ALL, sel, unsel }),
-    onSortByRank: () => dispatch({ type: actions.SORT_BY_RANK }),
-    onSortByPrice: () => dispatch({ type: actions.SORT_BY_PRICE })
+    onAddCurrency: (id) => dispatch(add(id)),
+    onRemoveCurrency: (id) => dispatch(remove(id)),
+    showAll: (sel, unsel) => dispatch(show(sel, unsel)),
+    onSortByRank: () => dispatch(sortByRank()),
+    onSortByPrice: () => dispatch(sortByPrice())
   }
 }
 
