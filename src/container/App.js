@@ -159,11 +159,6 @@ class App extends Component {
           <AddCurrency
             unsel={this.props.unsel}
             selectHandler={(event) => this.props.onAddCurrency(event.target.value)} />
-          {this.props.error ?
-            <div className="errorMessage">
-              Cannot track more than {MAX_SIZE} currencies, please remove old entries to add more.</div>
-            : null
-          }
           <Currencies
             sel={this.props.sel}
             delete={this.props.onRemoveCurrency}
@@ -172,6 +167,11 @@ class App extends Component {
             ascRank={this.props.ascRank}
             ascPrice={this.props.ascPrice}
           />
+          {this.props.error ?
+            <div className="errorMessage">
+              Cannot track more than {MAX_SIZE} currencies, please remove old entries to add more.</div>
+            : null
+          }
         </div>
       </div >
     );
