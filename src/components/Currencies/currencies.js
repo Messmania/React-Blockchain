@@ -13,12 +13,12 @@ const currencies = (props) => {
                         <th>Symbol</th>
                         <th
                             onClick={props.sortByRank}>
-                            Rank
+                            CMC Rank
                             <FontAwesomeIcon icon={!props.ascRank ? faCaretUp : faCaretDown} />
                         </th>
                         <th
                             onClick={props.sortByPrice}>
-                            Price(USD)
+                            Price (USD)
                             <FontAwesomeIcon icon={!props.ascPrice ? faCaretUp : faCaretDown} />
                         </th>
                         {multiple ? <th></th> : null}
