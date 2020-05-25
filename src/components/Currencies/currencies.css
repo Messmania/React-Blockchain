@@ -16,6 +16,10 @@ table td, table th{
     border: 1px solid;
 }
 
+table th {
+    cursor: default;
+}
+
 table tr:first-child th {
     border-top: 0px;
 }
@@ -34,8 +38,19 @@ table tr td:first-child {
 
 table tr td:last-child {
     border-right: 0px;
+    border-left: 0px;
 }
+
 table tr th:last-child {
+    border-right: 0px;
+    border-left: 0px;
+}
+
+table tr th:nth-last-child(2) {
+    border-right: 0px;
+}
+
+table tr td:nth-last-child(2) {
     border-right: 0px;
 }
 
