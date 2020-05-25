@@ -15,9 +15,7 @@ const syncAdd = (id, newEntry) => {
  * Async action creator for fetching selected currencies latest details
  */
 export const add = (id) => {
-    return (dispatch, getState) => {
-        //--dummy code
-        // const newEntryForTable = getState().unSelected.find(e => e.id === parseInt(id));
+    return (dispatch) => {
         //--Fetch it on every select, because bitcoin prices change, so user wants to see the latest value when it is added to the table
         axios.get(`/coinmarketcap/quotes?id=${id}`)
             .then(response => {
