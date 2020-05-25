@@ -1,7 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-
 ## Install and launch the project
+- Clone or download the repo
+- Go inside the project:
+  
+  `cd React-Blockchain`
 - Install dependencies: 
 
   `npm i`
