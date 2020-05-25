@@ -10,12 +10,12 @@ const currencies = (props) => {
             <table>
                 <thead>
                     <tr>
-                        <th>Symbol</th>
                         <th
                             onClick={props.sortByRank}>
                             CMC Rank
                             <FontAwesomeIcon icon={!props.ascRank ? faCaretUp : faCaretDown} />
                         </th>
+                        <th> Symbol </th>
                         <th
                             onClick={props.sortByPrice}>
                             Price (USD)
@@ -27,8 +27,8 @@ const currencies = (props) => {
                 <tbody>
                     {props.sel.map(e =>
                         <tr key={e.id}>
-                            <td>{e.symbol}</td>
                             <td>{e.rank}</td>
+                            <td>{e.symbol}</td>
                             <td>{e.price}</td>
                             {multiple ? <td><button onClick={() => props.delete(e.id)}><FontAwesomeIcon icon={faTrash} /></button></td> : null}
                         </tr>)

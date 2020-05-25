@@ -166,7 +166,7 @@ class App extends Component {
           <div>StackAdapt</div>
           <div>
             <img src={logo} className="App-logo" alt="logo" />
-            <span>Blockchain Tracker</span>
+            <span>Cryptocurrency Tracker</span>
           </div>
         </header>
         {this.state.error ? <div className="errorMessage"> Oops! Something went wrong: {this.state.details.message} </div> :
