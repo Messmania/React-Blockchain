@@ -127,6 +127,18 @@ import Currencies from "../components/Currencies/currencies";
 // }
 class App extends Component {
 
+  state = {
+    error: false,
+    details: ''
+  }
+
+  updateError(error){
+    this.setState({
+      error: true,
+      details: error
+    });
+
+  }
   /**
    * Loads all the currencies and fetches details of first 5 to show in table
    */
@@ -140,8 +152,10 @@ class App extends Component {
             let total = sanitizeData(response.data.data);
             let showInTable = total.slice(0, 5);
             this.props.showAll(showInTable, showInDropdown);
-          });
-      });
+          })
+          .catch(error => this.updateError(error));
+      })
+      .catch(error => this.updateError(error));
   }
 
 
@@ -155,24 +169,26 @@ class App extends Component {
             <span>Blockchain Tracker</span>
           </div>
         </header>
-        <div className="main">
-          <AddCurrency
-            unsel={this.props.unsel}
-            selectHandler={(event) => this.props.onAddCurrency(event.target.value)} />
-          <Currencies
-            sel={this.props.sel}
-            delete={this.props.onRemoveCurrency}
-            sortByRank={this.props.onSortByRank}
-            sortByPrice={this.props.onSortByPrice}
-            ascRank={this.props.ascRank}
-            ascPrice={this.props.ascPrice}
-          />
-          {this.props.error ?
-            <div className="errorMessage">
-              Cannot track more than {MAX_SIZE} currencies, please remove old entries to add more.</div>
-            : null
-          }
-        </div>
+        {this.state.error ? <div className="errorMessage"> Oops! Something went wrong: {this.state.details.message} </div> :
+          <div className="main">
+            <AddCurrency
+              unsel={this.props.unsel}
+              selectHandler={(event) => this.props.onAddCurrency(event.target.value)} />
+            <Currencies
+              sel={this.props.sel}
+              delete={this.props.onRemoveCurrency}
+              sortByRank={this.props.onSortByRank}
+              sortByPrice={this.props.onSortByPrice}
+              ascRank={this.props.ascRank}
+              ascPrice={this.props.ascPrice}
+            />
+            {this.props.error ?
+              <div className="errorMessage">
+                Cannot track more than {MAX_SIZE} currencies, please remove old entries to add more.</div>
+              : null
+            }
+          </div>
+        }
       </div >
     );
   }

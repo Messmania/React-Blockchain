@@ -23,7 +23,8 @@ export const add = (id) => {
             .then(response => {
                 let newEntryForTable = sanitizeData(response.data.data)[0];
                 dispatch(syncAdd(id, newEntryForTable));
-            });
+            })
+            .catch(error => { console.error("Something went wrong!", error.message) })
     }
 }
 
