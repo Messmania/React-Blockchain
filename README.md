@@ -17,10 +17,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Code written for Blockchain app is inside src folder.
 
 ## Modules used
-- axios: for HTTP
-- redux, react-redux: for state management
-- redux-thunk: for async calls
-- fontawesome: for icons
+- **axios**: for HTTP
+- **redux**, **react-redux**: for state management
+- **redux-thunk**: for async calls
+- **fontawesome**: for icons
 
 ## Proxy
 - Proxy for stackadapt url is added inside package.json file.
